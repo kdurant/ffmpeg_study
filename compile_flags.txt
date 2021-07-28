@@ -1,22 +1,7 @@
+-target
+x86_64-pc-windows-gnu
 
 -isystem
-D:\Qt\Qt5.14.2\Tools\mingw730_64\x86_64-w64-mingw32\include
+C:\ffmpeg\include
 
-FFMPEG_PATH = D:/Program/ffmpeg
 
--isystem
-$(FFMPEG_PATH)/include/libavcodec
--isystem
-$(FFMPEG_PATH)/include/libavdevice
--isystem
-$(FFMPEG_PATH)/include/libavfilter
--isystem
-$(FFMPEG_PATH)/include/libavformat
--isystem
-$(FFMPEG_PATH)/include/libavutil
--isystem
-$(FFMPEG_PATH)/include/libpostproc
--isystem
-$(FFMPEG_PATH)/include/libswresample
--isystem
-$(FFMPEG_PATH)/include/libswscale
