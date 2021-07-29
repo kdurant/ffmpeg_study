@@ -3,6 +3,7 @@
 - [office repo](https://github.com/FFmpeg/FFmpeg)
 - [ffmpeg-libav-tutorial](https://github.com/leandromoreira/ffmpeg-libav-tutorial)
 - [simplest_ffmpeg_device](https://github.com/leixiaohua1020/simplest_ffmpeg_device)
+- [ffmpeg_tutorial](https://github.com/loupus/ffmpeg_tutorial)
 
 # 术语
 - codec, 编解码器，是编码器encoder与解码器decoder的混合体
@@ -13,6 +14,9 @@
 - muxer, 封装, 复用
 
 # ffmpeg常用数据类型
+
+## AVFormatContext
+描述了一个媒体文件或者媒体流的构成和基本信息
 
 ## AVFrame
 AVFrame中存储的是经过解码后的原始数据。在解码中，AVFrame是解码器的输出；在编码中，AVFrame是编码器的输入
