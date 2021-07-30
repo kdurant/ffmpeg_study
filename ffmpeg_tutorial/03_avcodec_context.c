@@ -1,3 +1,4 @@
+// 输出视频流信息
 #include <libavcodec/codec.h>
 #include <libavutil/avutil.h>
 #include <libavutil/log.h>

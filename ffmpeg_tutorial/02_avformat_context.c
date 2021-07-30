@@ -1,3 +1,5 @@
+// 输出文件格式信息
+
 #include <libavformat/avformat.h>
 #include <libavutil/log.h>
 #include <stdbool.h>

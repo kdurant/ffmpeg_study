@@ -8,4 +8,4 @@ include(../ffmpeg_include.pri)
 
 
 SOURCES += \
-        main.c
+        04_decode_and_dump_video.c

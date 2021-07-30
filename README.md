@@ -1,13 +1,16 @@
 # 学习资源
 - [office document](https://ffmpeg.org/documentation.html)
 - [office repo](https://github.com/FFmpeg/FFmpeg)
+- [ffmpeg4.1 api](https://ffmpeg.org/doxygen/4.1/index.html)
 - [ffmpeg-libav-tutorial](https://github.com/leandromoreira/ffmpeg-libav-tutorial)
 - [simplest_ffmpeg_device](https://github.com/leixiaohua1020/simplest_ffmpeg_device)
 - [ffmpeg_tutorial](https://github.com/loupus/ffmpeg_tutorial)
 - [wlxklyh/FFMpegStudy](https://github.com/wlxklyh/FFMpegStudy)
+- [rambodrahmani/ffmpeg-video-player](https://github.com/rambodrahmani/ffmpeg-video-player)
 
 
 - [FFmpeg源码整体结构体](https://zhuanlan.zhihu.com/p/143195044)
+- [SDL中文教程](http://tjumyk.github.io/sdl-tutorial-cn/contents.html)
 # 术语
 - codec(coder-decoder), 编解码器，是编码器encoder与解码器decoder的混合体
 - demuxer, 解封装, 解复用
