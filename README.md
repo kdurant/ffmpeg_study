@@ -10,7 +10,9 @@
 
 
 - [FFmpeg源码整体结构体](https://zhuanlan.zhihu.com/p/143195044)
-- [SDL中文教程](http://tjumyk.github.io/sdl-tutorial-cn/contents.html)
+
+
+- [sdl2-tutorial-code](https://github.com/Noah11012/sdl2-tutorial-code)
 # 术语
 - codec(coder-decoder), 编解码器，是编码器encoder与解码器decoder的混合体
 - demuxer, 解封装, 解复用

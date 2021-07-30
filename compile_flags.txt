@@ -4,4 +4,6 @@ x86_64-pc-windows-gnu
 -isystem
 C:\ffmpeg\include
 
+-isystem
+C:\SDL2\include
 
