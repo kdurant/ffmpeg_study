@@ -7,6 +7,7 @@
 - [ffmpeg_tutorial](https://github.com/loupus/ffmpeg_tutorial)
 - [wlxklyh/FFMpegStudy](https://github.com/wlxklyh/FFMpegStudy)
 - [rambodrahmani/ffmpeg-video-player](https://github.com/rambodrahmani/ffmpeg-video-player)
+- [Thinking-in-AV](https://github.com/renhui/Thinking-in-AV)
 
 
 - [FFmpeg源码整体结构体](https://zhuanlan.zhihu.com/p/143195044)
