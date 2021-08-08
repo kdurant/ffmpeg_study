@@ -8,4 +8,5 @@ include(../ffmpeg_include.pri)
 
 
 SOURCES += \
-        04_decode_and_dump_video.c
+#        04_decode_and_dump_video.c
+        a11_extract_audio.c

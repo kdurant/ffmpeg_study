@@ -23,15 +23,15 @@
 
 
 # 模块功能
-- libavformat，format，格式封装
-- libavcodec，codec，编码、解码
-- libavutil，util，通用音视频工具，像素、IO、时间等工具
-- libavfilter，filter，过滤器，可以用作音视频特效处理
-- libavdevice，device，设备（摄像头、拾音器）
-- libswscale，scale，视频图像缩放，像素格式互换
-- libavresample，resample，重采样
-- libswresample，也是重采样，类似图像缩放
-- libpostproc，后处理，？？
+- libavformat，实现流协议，容器格式及其IO访问
+- libavcodec，提供一系列编码器的实现
+- libavutil，通用音视频工具，像素、IO、时间等工具
+- libavfilter，过滤器，可以用作音视频特效处理
+- libavdevice，实现了访问捕获设备和回放设备的接口
+- libswscale，视频图像缩放，像素格式互换
+- libavresample，混音和重采样
+- libswscale，实现了色彩转换和缩放功能
+
 ![pic](https://pic4.zhimg.com/80/v2-0587c276a49b615f8845a4a8b564849b_720w.jpg)
 
 # 常用数据类型
