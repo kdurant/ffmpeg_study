@@ -1,3 +1,6 @@
+#include <SDL_pixels.h>
+#include <SDL_render.h>
+#include <SDL_video.h>
 #include <libavcodec/codec.h>
 #include <libavcodec/packet.h>
 #include <libavutil/avutil.h>
@@ -8,6 +11,12 @@
 
 #include <libavformat/avformat.h>
 #include <libavcodec/avcodec.h>
+#include <SDL.h>
+#undef main
+
+SDL_Renderer *renderer;
+SDL_Texture * texture;
+SDL_Rect      r;
 
 void pgm_save(unsigned char *buf, int wrap, int xsize, int ysize, FILE *f)
 {
@@ -19,11 +28,17 @@ void pgm_save(unsigned char *buf, int wrap, int xsize, int ysize, FILE *f)
     }
 }
 
+void displayFrame(AVFrame *frame, AVCodecContext *dec_ctx)
+{
+    SDL_UpdateYUVTexture(texture, &r, frame->data[0], frame->linesize[0], frame->data[1], frame->linesize[1], frame->data[2], frame->linesize[2]);
+    SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, texture, NULL, NULL);
+    SDL_RenderPresent(renderer);
+}
+
 void decode(AVCodecContext *dec_ctx, AVFrame *frame, AVPacket *pkt, FILE *f)
 {
-    char buf[1024];
-    int  ret;
-
+    int ret;
     ret = avcodec_send_packet(dec_ctx, pkt);
     if(ret < 0)
     {
@@ -47,7 +62,46 @@ void decode(AVCodecContext *dec_ctx, AVFrame *frame, AVPacket *pkt, FILE *f)
         printf("saving frame %3d\n", dec_ctx->frame_number);
         fflush(stdout);
         pgm_save(frame->data[0], frame->linesize[0], frame->width, frame->height, f);
+
+        displayFrame(frame, dec_ctx);
     }
+}
+
+int initSDL(AVCodecContext *codec_ctx)
+{
+    SDL_Window *window = NULL;
+    if(SDL_Init(SDL_INIT_VIDEO) < 0)
+    {
+        fprintf(stderr, "could not init sdl %s\n", SDL_GetError());
+        return -1;
+    }
+    window = SDL_CreateWindow("Preview", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, codec_ctx->width, codec_ctx->coded_height, 0);
+    if(!window)
+    {
+        fprintf(stderr, "could not create sdl window \n");
+        return -1;
+    }
+
+    r.x = 0;
+    r.y = 0;
+    r.w = codec_ctx->width;
+    r.h = codec_ctx->height;
+
+    renderer = SDL_CreateRenderer(window, -1, 0);
+    if(!renderer)
+    {
+        fprintf(stderr, "could not create sdl renderer \n");
+        return -1;
+    }
+
+    texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_YV12, SDL_TEXTUREACCESS_STREAMING, codec_ctx->width, codec_ctx->height);
+    if(!texture)
+    {
+        fprintf(stderr, "could not create sdl texture \n");
+        return -1;
+    }
+
+    return 0;
 }
 
 int main(void)
@@ -149,6 +203,12 @@ int main(void)
         goto end;
     }
 
+    if(initSDL(codec_ctx) < 0)
+    {
+        av_log(NULL, AV_LOG_ERROR, "init sdl failed\n");
+        goto end;
+    }
+
     while(1)
     {
         if((ret = av_read_frame(fmt_ctx, pkt)) < 0)
@@ -181,4 +241,3 @@ end:
 
     return 0;
 }
-

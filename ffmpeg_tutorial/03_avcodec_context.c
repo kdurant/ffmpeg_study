@@ -13,17 +13,18 @@ int main(void)
     AVCodecContext * codec_ctx = NULL;
     AVCodec *        codec     = NULL;
 
-    int   ret             = 0;
-    char *filename        = "../small_bunny_1080p_60fps.mp4";
-    int   video_stream_id = -1;
+    int ret = 0;
+    //    char *filename        = "../small_bunny_1080p_60fps.mp4";
+    char *filename           = "../Wildlife.wmv";
+    int   video_stream_index = -1;
 
-    if(ret = avformat_open_input(&fmt_ctx, filename, NULL, NULL) < 0)
+    if((ret = avformat_open_input(&fmt_ctx, filename, NULL, NULL)) < 0)
     {
         av_log(NULL, AV_LOG_ERROR, "cannot open input file\n");
         goto end;
     }
 
-    if(ret = avformat_find_stream_info(fmt_ctx, NULL) < 0)
+    if((ret = avformat_find_stream_info(fmt_ctx, NULL)) < 0)
     {
         av_log(NULL, AV_LOG_ERROR, "cannot get  stream information\n");
         goto end;
@@ -33,24 +34,24 @@ int main(void)
     {
         if(fmt_ctx->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO)
         {
-            video_stream_id = i;
+            video_stream_index = i;
             break;
         }
     }
 
-    if(video_stream_id < 0)
+    if(video_stream_index < 0)
     {
         av_log(NULL, AV_LOG_ERROR, "No video stream\n");
         goto end;
     }
 
-    av_dump_format(fmt_ctx, video_stream_id, filename, false);
+    av_dump_format(fmt_ctx, video_stream_index, filename, false);
 
     codec_ctx = avcodec_alloc_context3(NULL);
 
-    if(ret = avcodec_parameters_to_context(codec_ctx, fmt_ctx->streams[video_stream_id]->codecpar) < 0)
+    if((ret = avcodec_parameters_to_context(codec_ctx, fmt_ctx->streams[video_stream_index]->codecpar)) < 0)
     {
-        av_log(NULL, AV_LOG_ERROR, "Cannot get codec video decoder\n");
+        av_log(NULL, AV_LOG_ERROR, "Cannot get codec parameters\n");
         goto end;
     }
 
@@ -61,7 +62,7 @@ int main(void)
         goto end;
     }
 
-    if(ret = avcodec_open2(codec_ctx, codec, NULL) < 0)
+    if((ret = avcodec_open2(codec_ctx, codec, NULL)) < 0)
     {
         av_log(NULL, AV_LOG_ERROR, "Cannot open video decoder\n");
         goto end;
