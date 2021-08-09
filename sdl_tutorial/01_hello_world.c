@@ -7,7 +7,7 @@
 #undef main
 
 const int WIDTH = 800, HEIGHT = 600;
-int main(void)
+int       main(void)
 {
     SDL_Init(SDL_INIT_EVERYTHING);
 
