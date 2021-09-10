@@ -7,3 +7,4 @@ LIBS += -L$$SDL2_PATH/lib/x64 -lSDL2main
 LIBS += -L$$SDL2_PATH/lib/x64 -lSDL2test
 
 # #undef main
+
