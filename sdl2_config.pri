@@ -1,4 +1,4 @@
-SDL2_PATH = C:/SDL2
+SDL2_PATH = D:/Lib/SDL2
 
 INCLUDEPATH += $$SDL2_PATH/include
 

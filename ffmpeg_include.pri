@@ -1,4 +1,4 @@
-FFMPEG_PATH = C:/ffmpeg
+FFMPEG_PATH = D:/Lib/ffmpeg
 #
 INCLUDEPATH += $$FFMPEG_PATH/include
 LIBS += -L$$FFMPEG_PATH/lib -lavcodec    \
